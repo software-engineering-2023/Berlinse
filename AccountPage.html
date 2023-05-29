@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="transaction.css">
+
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .center-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .AccountButton {
+        background-color: #0e1f25;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    #accountDetails {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #accountDetails p {
+        margin: 5px;
+    }
+</style>
+<script>
+    function displayAccountDetails(accountName) {
+        var accountDetails = document.getElementById("accountDetails");
+        var accountTitle = document.getElementById("accountTitle");
+        var accountInfo = document.getElementById("accountInfo");
+
+        // Clear previous account details
+        accountInfo.innerHTML = "";
+
+        // Set account title
+        accountTitle.textContent = accountName;
+
+        // Display dummy account details based on the selected account
+        if (accountName === "Account 1") {
+            accountInfo.innerHTML += "<p>Balance: 20522 LE</p>";
+            accountInfo.innerHTML += "<p>Account Type: Savings</p>";
+            accountInfo.innerHTML += "<p>Account Name: Antoun Atef</p>";
+            accountInfo.innerHTML += "<p>Account ID: 123456789</p>";
+            // Add more details as needed
+        } else if (accountName === "Account 2") {
+            accountInfo.innerHTML += "<p>Balance: 1500 LE</p>";
+            accountInfo.innerHTML += "<p>Account Type: Checking</p>";
+            accountInfo.innerHTML += "<p>Account Name: Antoun Atef</p>";
+            accountInfo.innerHTML += "<p>Account ID: 987654321</p>";
+            // Add more details as needed
+        } else if (accountName === "Account 3") {
+            accountInfo.innerHTML += "<p>Balance: 50000 LE</p>";
+            accountInfo.innerHTML += "<p>Account Type: Investment</p>";
+            accountInfo.innerHTML += "<p>Account Name: Antoun Atef</p>";
+            accountInfo.innerHTML += "<p>Account ID: 456789123</p>";
+            // Add more details as needed
+        }
+
+        accountDetails.style.display = "block";
+    }
+</script>
+<body>
+    <body>
+        <div class="center-div">
+            <button class="AccountButton" onclick="displayAccountDetails('Account 1')">Account 1</button>
+            <button class="AccountButton" onclick="displayAccountDetails('Account 2')">Account 2</button>
+            <button class="AccountButton" onclick="displayAccountDetails('Account 3')">Account 3</button>
+        </div>
+    
+        <div id="accountDetails" style="display: none;">
+            <h2 id="accountTitle"></h2>
+            <div id="accountInfo"></div>
+        </div>
+</body>
+</html>
