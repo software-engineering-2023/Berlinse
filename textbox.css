@@ -1,0 +1,83 @@
+body {
+    background-image: url(transaction.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+    background-position: center center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.issue {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #02373d;
+    background-color: none;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: inline-block;
+  margin-right: 400px;
+  }
+
+  .issue:nth-child(1) {
+    /* Styles for the first issue */
+    margin-top: 15px;
+    margin-right: 440px;
+    
+  }
+  
+  .issue:nth-child(2) {
+    /* Styles for the second issue */
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  
+  .issue:nth-child(3) {
+    /* Styles for the third issue */
+    margin-top: 75px;
+    margin-right: 10px;
+  }
+
+  .issue:nth-child(4) {
+    /* Styles for the first issue */
+    margin-top: 75px;
+    margin-right: 10px;
+    
+  }
+      
+
+
+        #issueDropdown {
+          position: absolute;
+          top: 20%;
+          left: 50%;
+          width: 20%;
+          height: 5%;
+          font-weight: Bold;
+          background-color: transparent;
+          transform: translate(-50%, -50%);
+          /* Additional styles if needed */
+      }
+
+      #tableContainer {
+        position: absolute;
+        top: 48%;
+        left: 52%;
+        font-weight: Bold;
+        font-size: 118%;
+        transform: translate(-50%, -50%);
+        /* Additional styles if needed */
+    }
+
+    .scroll-options {
+      position: absolute;
+      top: 25%;
+      left: 38%;
+      font-weight: Bold;
+      font-size: 130%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;      /* Additional styles if needed */
+  }
+        

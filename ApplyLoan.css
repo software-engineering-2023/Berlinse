@@ -1,0 +1,9 @@
+.form-groupL input[type="text"],
+.form-groupL input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000; /* Set the border color to black */
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: transparent;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="transaction.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 43.5%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .action-buttons button {
+            padding: 6px 10px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .accept-button {
+            background-color: #0e1f25;
+            color: white;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Report ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>45</td>
+                <td>Mohamed sonbul</td>
+                <td>I am writing to report the loss of my credit card. Unfortunately, I have misplaced my card and believe it may have been stolen. I am taking this matter seriously and would like to request immediate assistance to ensure the security of my account</td>
+
+                <td class="action-buttons">
+                    <button class="accept-button" onclick="deleteRow(this)">Handle</button>
+                </td>
+            </tr>
+            <tr>
+                <td>46</td>
+                <td>Youssef Abdeen</td>
+                <td>I am writing to report the damage to my credit card. Unfortunately, the card has been physically damaged and is no longer functioning properly. I would like to request assistance in replacing the damaged card to ensure uninterrupted access to my account</td>
+              
+                <td class="action-buttons">
+                    <button class="accept-button" onclick="deleteRow(this)">Handle</button>
+                </td>
+            </tr>
+            <tr>
+                <td>47</td>
+                <td>Julia Asser</td>
+                <td>I am writing to report the theft of my credit card. Unfortunately, my wallet was stolen, and along with it, my credit card went missing. I would like to take immediate action to protect my account and prevent any unauthorized transactions.</td>
+                <td class="action-buttons">
+                    <button class="accept-button" onclick="deleteRow(this)">Handle</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function deleteRow(button) {
+            // Traverse up the DOM to find the parent row element and remove it
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card</title>
+    <link rel="stylesheet" href="card.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0e1f25;
+        }
+
+        .credit-card {
+            text-align: center;
+            color: #0e1f25;
+            width: 300px;
+            margin-top: 300px;
+        }
+
+        .credit-card h1 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background-color: #0e1f25;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+
+
+        .GoToRedeem {
+            background-color: #0e1f25;
+            top: 4px;
+            right: 60px;
+            width: 120px;
+            height: 30px;
+            color: white;
+            border: none;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        
+    </style>
+</head>
+
+
+<script>
+    
+  function RedeemPoints() {
+      window.location.href = 'Redeem.html';
+      
+  }
+</script>
+
+
+<body>
+    <div class="credit-card">
+        <h1>CARD INFO</h1>
+        <div class="form-group">
+            <label for="card-number">Card number:</label>
+            <input type="text" id="card-number" value="123456789789" readonly>
+        </div>
+        <div class="form-group">
+            <label for="name-on-card">Name on card:</label>
+            <input type="text" id="name-on-card" value="Antoun Atef" readonly>
+        </div>
+        <div class="form-group">
+            <label for="expiry-date">Expiry date:</label>
+            <input type="text" id="expiry-date" value="09/28" readonly>
+        </div>
+        <div class="form-group">
+            <label for="security-code">Security code:</label>
+            <input type="text" id="security-code" value="555" readonly>
+        </div>
+    </div>
+
+</body>
+
+
+<button class="GoToRedeem" onclick="RedeemPoints()"> Go For Points </button>
+
+</body>
+</html>

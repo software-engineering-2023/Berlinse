@@ -1,0 +1,38 @@
+.overlayO {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+  }
+  
+  .modalO {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  #openTable {
+    width: 100%;
+  }
+  
+  #openTable th,
+  #openTable td {
+    padding: 10px;
+  }
+  
+  #openTable th {
+    background-color: #f2f2f2;
+  }
+  
+  #openTable td button {
+    margin-right: 5px;
+  }

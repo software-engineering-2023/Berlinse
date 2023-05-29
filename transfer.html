@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="transaction.css">
+
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #0e1f25;
+    }
+    
+    .transfer-form {
+        background-color: transparent;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        color: rgb(0, 0, 0);
+    }
+    
+    .transfer-form h1 {
+        margin-top: 0;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #fff;
+    }
+    
+    .submit-btn {
+        background-color: #0e1f25;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="transfer-form">
+    <h1>Transfer</h1>
+    <div class="form-group">
+        <label for="transfer-option">Transfer Option:</label>
+        <select id="transfer-option">
+            <option value="own">Own</option>
+            <option value="internal">Internal</option>
+            <option value="domestic">Domestic</option>
+            <option value="international">International</option>
+        </select>
+    </div>
+    <div class="form-group" id="from-account-group">
+        <label for="from-account">From Account:</label>
+        <input type="text" id="from-account">
+    </div>
+    <div class="form-group" id="to-account-group">
+        <label for="to-account">To Account:</label>
+        <input type="text" id="to-account">
+    </div>
+    <div class="form-group" id="bank-group">
+        <label for="bank">A Bank You Want To Transfer:</label>
+        <input type="text" id="bank">
+    </div>
+    <div class="form-group" id="account-number-group">
+        <label for="account-number">Account Number:</label>
+        <input type="text" id="account-number">
+    </div>
+    <div class="form-group" id="country-group">
+        <label for="country">Country:</label>
+        <input type="text" id="country">
+    </div>
+    <div class="form-group" id="bank-name-group">
+        <label for="bank-name">Bank Name:</label>
+        <input type="text" id="bank-name">
+    </div>
+    <div class="form-group" id="ipan-group">
+        <label for="ipan">IBAN:</label>
+        <input type="text" id="ipan">
+    </div>
+    <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount">
+    </div>
+    <button id="submit-btn" class="submit-btn">Transfer</button>
+</div>
+
+<script>
+
+
+    const transferOption = document.getElementById('transfer-option');
+    const fromAccountGroup = document.getElementById('from-account-group');
+    const toAccountGroup = document.getElementById('to-account-group');
+    const bankGroup = document.getElementById('bank-group');
+    const accountNumberGroup = document.getElementById('account-number-group');
+    const countryGroup = document.getElementById('country-group');
+    const bankNameGroup = document.getElementById('bank-name-group');
+    const ipanGroup = document.getElementById('ipan-group');
+    let submitButton = document.getElementById("submit-btn");
+    // fromAccountGroup.style.display = 'none';
+        // toAccountGroup.style.display = 'none';
+        bankGroup.style.display = 'none';
+        accountNumberGroup.style.display = 'none';
+        countryGroup.style.display = 'none';
+        bankNameGroup.style.display = 'none';
+        ipanGroup.style.display = 'none';
+        
+
+    transferOption.addEventListener('change', () => {
+        
+        fromAccountGroup.style.display = 'none';
+        toAccountGroup.style.display = 'none';
+        bankGroup.style.display = 'none';
+        accountNumberGroup.style.display = 'none';
+        countryGroup.style.display = 'none';
+        bankNameGroup.style.display = 'none';
+        ipanGroup.style.display = 'none';
+        
+        const selectedOption = transferOption.value;
+
+        if (selectedOption === 'own') {
+            fromAccountGroup.style.display = 'block';
+            toAccountGroup.style.display = 'block';
+        } else if (selectedOption === 'internal') {
+            fromAccountGroup.style.display = 'block';
+            toAccountGroup.style.display = 'block';
+        } else if (selectedOption === 'domestic') {
+            fromAccountGroup.style.display = 'block';
+            bankGroup.style.display = 'block';
+            accountNumberGroup.style.display = 'block';
+        } else if (selectedOption === 'international') {
+            fromAccountGroup.style.display = 'block';
+            countryGroup.style.display = 'block';
+            bankNameGroup.style.display = 'block';
+            ipanGroup.style.display = 'block';
+        }
+      
+    });
+
+    submitButton.addEventListener('click', () => {
+        const fromAccount = document.getElementById('from-account').value;
+        const toAccount = document.getElementById('to-account').value;
+        const bank = document.getElementById('bank').value;
+        const accountNumber = document.getElementById('account-number').value;
+        const country = document.getElementById('country').value;
+        const bankName = document.getElementById('bank-name').value;
+        const ipan = document.getElementById('ipan').value;
+        const amount = document.getElementById('amount').value;
+        const transferOption = document.getElementById('transfer-option');
+
+        const selectedOption = transferOption.value;
+
+        if (
+            fromAccount !== '' &&
+            toAccount !== '' &&
+            amount !== '' && (selectedOption === "own" || selectedOption === "internal")
+        ) {
+            alert('Your Transfer has been completed.');
+        }
+        else if (fromAccount !== '' && accountNumber !== '' && amount !== '' && bank !== '' && selectedOption === "domestic"){
+            alert('Your Transfer has been completed.');
+        }
+        else if (fromAccount !== '' && bank !== '' && country !== '' && ipan !== '' && amount !== '' && selectedOption === "international"){
+            alert('Your Transfer has been completed.');
+
+        }
+        else {
+            alert('You should fill all the requirements.');
+        }
+    });
+</script>
+</body>
+</html>
