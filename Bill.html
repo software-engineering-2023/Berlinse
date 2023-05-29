@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="transaction.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .bill-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group select,
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="text"] {
+            background-color: transparent;
+        }
+
+        .pay-button {
+            background-color: #0e1f25;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pay-button:hover {
+            background-color: #0b151a;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #0e1f25;
+        }
+    </style>
+</head>
+<body>
+    <div class="bill-form">
+        <h2>Bill Payment</h2>
+        <div class="form-group">
+            <label for="bill-type">Select Bill Type:</label>
+            <select id="bill-type">
+                <option value="water">Water</option>
+                <option value="electricity">Electricity</option>
+                <option value="gas">Gas</option>
+                <option value="telephone">Telephone</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="payment-method">Select Payment Method:</label>
+            <select id="payment-method">
+                <option value="credit-card">Credit Card</option>
+                <option value="account">Account</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="payment-type">Select Payment Type:</label>
+            <select id="payment-type">
+                <option value="full-payment">Pay Fully</option>
+                <option value="partial-payment">Pay Partially</option>
+            </select>
+        </div>
+        <div class="form-group" id="amount-field">
+            <label for="amount">Enter Amount:</label>
+            <input type="text" id="amount" placeholder="Enter the amount">
+        </div>
+        <button id="pay-button" class="pay-button">Pay</button>
+        <div class="message" id="payment-message"></div>
+    </div>
+
+    <script>
+        document.getElementById('payment-type').addEventListener('change', function() {
+            var amountField = document.getElementById('amount-field');
+            if (this.value === 'partial-payment') {
+                amountField.style.display = 'block';
+            } else {
+                amountField.style.display = 'none';
+            }
+        });
+
+        document.getElementById('pay-button').addEventListener('click', function() {
+            var paymentMessage = document.getElementById('payment-message');
+            paymentMessage.textContent = "You have successfully paid your bill.";
+            paymentMessage.style.display = 'block';
+            setTimeout(function() {
+        paymentMessage.style.display = 'none';
+    }, 3000);
+
+        });
+    </script>
+</body>
+</html>

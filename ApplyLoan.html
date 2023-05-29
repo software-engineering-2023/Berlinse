@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="transaction.css">
+    <link rel="stylesheet" href="ApplyLoan.css">
+
+
+
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0e1f25;
+            border: 0e1f25;
+        }
+
+        .Loan-Application {
+            background-color:transparent;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0e1f25;
+            text-align: center;
+            border: eaecee;
+        }
+
+        .Loan-Application h1 {
+            margin-top: 0;
+        }
+
+        .form-groupL {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-groupL label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            border: #0e1f25;
+        }
+
+        .form-groupL input,
+        .form-groupL select,
+        .form-groupL textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: transparent; /* Set the background color to transparent */
+        }
+
+        .form-groupL textarea {
+            resize: vertical;
+            color: 0e1f25;
+            border: 0e1f25;
+        }
+
+        #submit-btnL {
+            background-color: #0e1f25;
+            color: 0e1f25;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #submit-btnL:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #apply-loan-btn{
+            background-color: #0e1f25;
+            color: white;
+            width: 63px; /* Adjust the width as needed */
+            height: 28px;
+
+        }
+    </style>
+
+</head>
+<body>
+    <div class="Loan-Application">
+        <h1>Loan Application</h1>
+        <div class="form-groupL">
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name">
+        </div>
+        <div class="form-groupL">
+            <label for="loan-type">Loan Type:</label>
+            <input type="text" id="loan-type">
+        </div>
+        <div class="form-groupL">
+            <label for="loan-amount">Amount:</label>
+            <input type="text" id="loan-amount">
+        </div>
+        <div class="form-groupL">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone">
+        </div>
+        <div class="form-groupL">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email">
+        </div>
+        <button id="apply-loan-btn">APPLY</button>
+    </div>
+
+    <script>
+        const applyLoanBtn = document.getElementById('apply-loan-btn');
+        applyLoanBtn.addEventListener('click', () => {
+            const fullName = document.getElementById('full-name').value;
+            const loanType = document.getElementById('loan-type').value;
+            const loanAmount = document.getElementById('loan-amount').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+
+            if (fullName && loanType && loanAmount && phone && email) {
+                alert('You have successfully applied for a loan!');
+            } else {
+                alert('Please fill in all the required fields.');
+            }
+        });
+    </script>
+</body>
+</body>
+</html>
