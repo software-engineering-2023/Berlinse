@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS styles for the modal */
+
+        table {
+            width: 91%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #090909;
+            border-right: 1px solid #090909;
+            border-top: 1px solid #090909;
+
+        }
+
+        /* CSS styles for the table container */
+        #tableContainer {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        /* CSS styles for the popup container */
+        .popup-container {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+       
+
+        .resolve-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="transaction.css">
+    <link rel="stylesheet" href="textbox.css">
+
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <div class="textbox-container" id="textbox-container">
+        <div class="scroll-options" onclick="showTable()">
+            <span class="placeholder">Select an issue</span>
+            <ul>
+                <li onclick="selectOption(this)">Server Error</li>
+                <li onclick="selectOption(this)">Database Connection Failed</li>
+                <li onclick="selectOption(this)">Security Breach</li>
+            </ul>
+        </div>
+        <div id="tableContainer" style="display: none;">
+            <table id="detailsTable">
+                <!-- Table content will be added dynamically -->
+            </table>
+        </div>
+    </div>
+    
+    <div id="popupContainer" class="popup-container">
+        <div class="popup-content">
+            <h2>Congratulations!</h2>
+            <p id="popupMessage"></p>
+            <button class="ok" onclick="last()">Done</button>
+        </div>
+    </div>
+
+    <div id="popupContainer2" class="popup-container">
+        <div class="popup-content">
+            <h2 style="color: green;">Well Done! &#10004;</h2>
+            <p id="popupMessage2"></p>
+            <button class="GG" onclick="Redirect()">OK</button>
+        </div>
+    </div>
+    
+    <script>
+        var resolvedProblems = 0;
+        var donecount=0;
+        var popupContainer = document.getElementById("popupContainer");
+
+        function openModal(details, dropdown) {
+            if (details) {
+                currentProblemButton = dropdown;
+                document.getElementById("modalDetails").textContent = details;
+                document.getElementById("myModal").style.display = "block";
+            }
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function ignoreProblem() {
+            closeModal();
+        }
+
+        function resolveProblem(button) {
+            
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            
+            var tableRows = document.querySelectorAll("#detailsTable tr");
+            
+                resolvedProblems++;
+                donecount++;
+                switch (row.id) {
+                    case "502":
+                    case "503":
+                    case "504":
+                        if (resolvedProblems === 3) {
+                            document.getElementById("popupMessage").textContent = "Congratulations! You have resolved all Server errors.";
+                            showPopup();
+                            document.querySelector("#textbox-container ul li:nth-child(1)").style.display = "none";
+                            resolvedProblems=0;
+
+                        }
+                        break;
+                    case "missing-connection":
+                     case "network-issues":
+                    
+
+                    case "authentication-failure":
+                   
+
+                        if (resolvedProblems === 3) {
+                            document.getElementById("popupMessage").textContent = "Congratulations! You have resolved all Database Connection Failed errors.";
+                            showPopup();
+                            document.querySelector("#textbox-container ul li:nth-child(2)").style.display = "none";
+                            resolvedProblems=0;
+
+                        }
+                        break;
+                    case "security-missing-connection":
+                  
+
+                    case "security-network-issues":
+                    
+
+                    case "security-authentication-failure":
+                   
+
+                        if (resolvedProblems === 3) {
+                            document.getElementById("popupMessage").textContent = "Congratulations! You have resolved all Security breach errors.";
+                            showPopup();
+                            document.querySelector("#textbox-container ul li:nth-child(3)").style.display = "none";
+                            resolvedProblems=0;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                if(donecount===11){
+                    document.getElementById("popupMessage2").textContent = "You have solved all the errors successfully.";
+
+                showPopup2();
+            }   
+   
+        }
+           
+            
+            
+        
+
+        function showPopup() {
+            popupContainer.style.display = "block";
+        }
+        function showPopup2() {
+            var popupContainer2 = document.getElementById("popupContainer2");
+            popupContainer2.style.display = "block";
+        }
+
+        function closePopup2() {
+            var popupContainer2 = document.getElementById("popupContainer2");
+            popupContainer2.style.display = "none";
+        }
+
+
+        function closePopup() {
+            popupContainer.style.display = "none";
+        }
+
+        function selectOption(option) {
+            var selectedOption = option.innerText;
+            var tableContainer = document.getElementById("tableContainer");
+            var detailsTable = document.getElementById("detailsTable");
+
+            detailsTable.innerHTML = "";
+
+            switch (selectedOption) {
+                case "Server Error":
+                    detailsTable.innerHTML = `
+                        <tr id="502">
+                            <th>502 Bad Gateway</th>
+                            <td>Network connectivity issues between the gateway/proxy server and the destination server.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr id="503">
+                            <th>503 Service Unavailable</th>
+                            <td>The server may be experiencing a high volume of traffic or resource usage, exceeding its capacity to handle additional requests.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr id="504">
+                            <th>504 Gateway Timeout</th>
+                            <td>The upstream server may be experiencing high traffic or performance issues, causing delays in processing and responding to requests.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                    `;
+                    break;
+                case "Database Connection Failed":
+                    detailsTable.innerHTML = `
+                        <tr id="missing-connection">
+                            <th>Missing Connection Details</th>
+                            <td>The connection between the systems is not provided completely.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr id="network-issues">
+                            <th>Network Connectivity Issues</th>
+                            <td>Misconfigured firewall rules or overly restrictive security settings can block or interfere with network connections.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr id="authentication-failure">
+                            <th>Authentication Failure</th>
+                            <td>Problems with network connectivity between the authentication server and the requesting system.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                    `;
+                    break;
+                case "Security Breach":
+                    detailsTable.innerHTML = `
+                        <tr id="security-missing-connection">
+                            <th>Missing Connection Details</th>
+                            <td>The connection between the systems is not provided completely.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr id="security-network-issues">
+                            <th>Network Connectivity Issues</th>
+                            <td>When the network experiences high traffic or congestion, it can result in slow or unstable connections.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr id="security-authentication-failure">
+                            <th>Authentication Failure</th>
+                            <td>User credentials have expired or been revoked, authentication will fail as the system cannot verify the validity of the credentials.</td>
+                            <td>
+                                <button class="resolve-button" onclick="resolveProblem(this)">Resolve</button>
+                            </td>
+                        </tr>
+                    `;
+                    break;
+                default:
+                    break;
+            }
+          
+           
+            
+          
+
+            // Show the table container
+            tableContainer.style.display = "block";
+        }
+
+        function showTable() {
+            var tableContainer = document.getElementById("tableContainer");
+            tableContainer.style.display = "block";
+        }
+
+     
+        function last(){
+            closePopup ();
+            donecount ++;
+
+             
+
+
+        }
+
+        function Redirect(){
+            closePopup2();
+            window.location.href = 'admin.html';
+        }
+    </script>
+</body>
+</html>
